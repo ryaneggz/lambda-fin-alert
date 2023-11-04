@@ -1,8 +1,5 @@
 # Python - Fin Alerts
 
-### JWT Authenication Docs From Here
-https://testdriven.io/blog/fastapi-jwt-auth/
-
 ### Run Development environment by running the following...
 ```bash
 ## Setup virutal env
