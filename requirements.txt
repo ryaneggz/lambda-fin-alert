@@ -1,0 +1,10 @@
+ccxt
+pytz
+matplotlib
+pandas
+mplfinance
+plotly
+ta
+kaleido
+boto3
+botocore
