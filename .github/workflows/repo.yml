@@ -25,6 +25,9 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
+      - name: Variables
+        run: env
+
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v3
         with:
