@@ -14,3 +14,12 @@ def central_unix_ts(date_time):
 
 	# Convert the localized datetime object to a Unix timestamp
 	return int(localized_dt.timestamp()) * 1000
+
+def unix_timestamp_to_string(unix_timestamp, timezone='America/Chicago'):
+    # Convert the Unix timestamp to a timezone-aware datetime object
+    tz = pytz.timezone(timezone)
+    dt = datetime.datetime.fromtimestamp(unix_timestamp, tz)
+
+    # Format the datetime object as a string
+    formatted_string = dt.strftime('%m/%d/%Y %I:%M %p')
+    return formatted_string

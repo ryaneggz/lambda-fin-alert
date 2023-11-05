@@ -5,7 +5,7 @@ from config import Params, Config
 from utils import upload_to_s3
 
 ####################################################################
-## Send to Slack Webhoook
+## Send Images
 ####################################################################
 def send_to_webhook(text, figs, webhook_url):
 	urls = []
@@ -33,7 +33,8 @@ def send_to_webhook(text, figs, webhook_url):
 	print(text)
 	response = requests.post(
 		url=webhook_url,
-		json=payload
+		json=payload,
+		timeout=5
 	)
 
 	# Check for errors in the response
@@ -41,3 +42,31 @@ def send_to_webhook(text, figs, webhook_url):
 		print(f'Error: {response.status_code}, {response.text}')
 	else:
 		response.raise_for_status()
+
+####################################################################
+## Send to Text Webhoook
+####################################################################
+def send_message_to_slack(text, webhook_url):
+	# Make sure the text is not empty
+    if not text.strip():
+        raise ValueError("The text parameter is empty.")
+
+    # Send the text via a Slack webhook
+    payload = {
+        "text": text
+    }
+    try:
+        response = requests.post(
+            url=webhook_url,
+            json=payload,
+            headers={'Content-Type': 'application/json'},  # Set the appropriate header
+            timeout=5
+        )
+        response.raise_for_status()  # This will raise an HTTPError if the HTTP request returned an unsuccessful status code
+    except requests.exceptions.HTTPError as http_err:
+        print(f'HTTP error occurred: {http_err}')  # Python 3.6+
+    except Exception as err:
+        print(f'An error occurred: {err}')  # Python 3.6+
+    else:
+        # If no errors, print the response text
+        print('Message sent successfully, response:', response.text)

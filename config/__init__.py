@@ -18,4 +18,4 @@ class Params(Enum):
 	IMAGE_WIDTH = os.environ.get('IMAGE_WIDTH', 1500)
 	TICKERS = os.environ.get('TICKERS', 'BTC/USD,ETH/USD').split(',')
 	START_DATE = os.environ.get('START_DATE')
-	INTERVAL = os.environ.get('INTERVAL', '1d')
+	INTERVALS = os.environ.get('INTERVALS', '1d')
