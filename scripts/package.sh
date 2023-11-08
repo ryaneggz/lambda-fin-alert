@@ -17,7 +17,7 @@ if [[ ! -d "./zips" ]]; then
 fi
 
 # Create a zip archive of the project directory, excluding the scripts directory and any .git directory.
-zip -r "./zips/$archive_name" . -x "scripts/*" ".git/*" ".env" ".vscode/*" "zips/*"
+zip -r "./zips/$archive_name" . -x "scripts/*" ".git/*" ".env" ".vscode/*" "zips/*" ".venv/*" "*__pycache__*" ".github/*" ".pylintrc"
 
 # Move the archive to a specific directory if needed, or just leave it in the project directory.
 # mv "$archive_name" /path/to/destination_directory
